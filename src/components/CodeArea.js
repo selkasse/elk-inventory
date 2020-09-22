@@ -9,23 +9,42 @@ class CodeArea extends Component {
     render() {
 
         function onChange(newValue) {
-            console.log("change", newValue);
+            // console.log("change", newValue);
+            try {
+                const userInput = new Function(newValue);
+
+                try {
+                    const results = userInput();
+                    if(results){
+                        console.log(results);
+                    }
+                }
+                catch(err){
+
+                }
+            }
+            catch(err){
+
+            }
+        }
+
+        function onLoad(editor) {
+            editor.getSession().setUseWrapMode(true);
         }
 
         return (
             <div className="code-area">
-                {/* <textarea className="my-ace"></textarea> */}
             <AceEditor
                 mode="javascript"
                 theme="nord_dark"
                 onChange={onChange}
+                onLoad={onLoad}
                 name="UNIQUE_ID_OF_DIV"
-                // maxLines={Infinity}
                 width="auto"
                 height="70%"
                 showPrintMargin={false}
                 fontSize="16px"
-                wrap={true}
+                wrap="1"
                 editorProps={{ $blockScrolling: Infinity }}
             />
             <Console />
