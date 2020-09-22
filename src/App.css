@@ -16,7 +16,13 @@
   border-right: 5px solid gray;
 }
 
+.console {
+  border-top: 5px solid gray;
+  padding: 0.5rem;
+}
+
 .content {
+  overflow: hidden;
   width: 55%;
   padding: 2rem;
 }

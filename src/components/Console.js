@@ -5,7 +5,7 @@ import '../App.css';
 class Console extends Component {
     render() {
         return (
-            <div>
+            <div className='console'>
                 CONSOLE
             </div>
         )
