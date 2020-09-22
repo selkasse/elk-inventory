@@ -25,4 +25,37 @@
   overflow: hidden;
   width: 55%;
   padding: 2rem;
+  text-align: center;
+}
+
+.story {
+  text-align: left;
+}
+
+.inventory {
+  /* changed from 3vw to 25px to test images */
+  display: inline-grid;
+  grid-template-columns: repeat(12, 25px);
+  grid-template-rows: repeat(5, 25px);
+  grid-gap: 0px;
+  text-align: center;
+  /* border: 5px solid #996633; */
+  /* border-top: 1px solid black;
+  border-left: 1px solid black; */
+}
+
+.cell {
+  background-color: #303030;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.img {
+  background-image: url(https://via.placeholder.com/50?text=trying+this+out);
+  background-attachment: fixed;
+  background-size: initial;
+  width: 25px;
+  height: 25px;
+  margin: 0;
+  display: inline-block;
 }
