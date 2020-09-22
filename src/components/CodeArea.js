@@ -9,7 +9,6 @@ class CodeArea extends Component {
     render() {
 
         function onChange(newValue) {
-            // console.log("change", newValue);
             try {
                 const userInput = new Function(newValue);
 
