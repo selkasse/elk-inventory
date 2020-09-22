@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import AceEditor from "react-ace";
 import Console from './Console';
 import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/theme-solarized_dark";
+import "ace-builds/src-noconflict/theme-nord_dark";
 import '../App.css';
 
 class CodeArea extends Component {
@@ -17,9 +17,8 @@ class CodeArea extends Component {
                 {/* <textarea className="my-ace"></textarea> */}
             <AceEditor
                 mode="javascript"
-                theme="solarized_dark"
+                theme="nord_dark"
                 onChange={onChange}
-                className="my-ace"
                 name="UNIQUE_ID_OF_DIV"
                 // maxLines={Infinity}
                 width="auto"

@@ -6,8 +6,6 @@
 
 .App {
   display: flex;
-  /* justify-content: space-between; */
-  /* flex-wrap: nowrap; */
   height: 100vh;
 }
 
@@ -20,13 +18,5 @@
 
 .content {
   width: 55%;
-  padding: 3rem;
-  /* padding-left: 3rem;
-  padding-top: 3rem; */
-}
-
-.my-ace {
-  /* width: 200px; */
-  height: 70%;
-  /* border: 5px solid blue; */
+  padding: 2rem;
 }
