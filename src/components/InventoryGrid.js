@@ -6,7 +6,8 @@ class InventoryGrid extends Component {
         const cells = Array(60).fill('');
         return (
             <div className='inventory'>
-                <img id="scroll" src="https://via.placeholder.com/50?text=2x2+scroll" alt="scroll" />
+                {/* <img id="scroll" src="https://via.placeholder.com/100?text=2x2+scroll" alt="scroll" /> */}
+
 
                 {/* // * First row */}
                 {/* <div className='img'></div>
