@@ -26,6 +26,11 @@
   width: 55%;
   padding: 2rem;
   text-align: center;
+  /* padding-left: 6rem;
+  padding-right: 6rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .story {
@@ -34,11 +39,13 @@
 
 .inventory {
   /* changed from 3vw to 25px to test images */
-  display: inline-grid;
-  grid-template-columns: repeat(12, 25px);
-  grid-template-rows: repeat(5, 25px);
+  display: grid;
+  grid-template-columns: repeat(12, 3.5vw);
+  grid-template-rows: repeat(5, 3.5vw);
   grid-gap: 0px;
   text-align: center;
+  background-color: #303030;
+
   /* border: 5px solid #996633; */
   /* border-top: 1px solid black;
   border-left: 1px solid black; */
@@ -51,11 +58,21 @@
 }
 
 .img {
-  background-image: url(https://via.placeholder.com/50?text=trying+this+out);
+  background-image: url(https://via.placeholder.com/150?text=scroll);
   background-attachment: fixed;
-  background-size: initial;
-  width: 25px;
-  height: 25px;
-  margin: 0;
+  /* position: absolute; */
+  /* background-size: initial; */
+  /* background-repeat: no-repeat; */
+  /* width: 3.5vw;
+  height: 3.5vw; */
+  /* margin: 0; */
   display: inline-block;
+}
+
+#scroll {
+  width: 14vw;
+  height: 14vw;
+  grid-column-start: 2;
+  /* grid-column-end: span 5; */
+  /* align-self: center; */
 }

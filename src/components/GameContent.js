@@ -8,8 +8,13 @@ class GameContent extends Component {
         return (
             <div className="content">
                 <p className="story">You found a muthafuckin scroll!</p>
+                <img src="https://via.placeholder.com/150?text=2x2+scroll" alt="scroll" />
+
                 <br /> <br /> <br />
-                <InventoryGrid />
+                <div>
+
+                    <InventoryGrid />
+                </div>
                 
             </div>
         )
