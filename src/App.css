@@ -34,7 +34,7 @@
 }
 
 .story {
-  text-align: left;
+  align-self: flex-start;
 }
 
 .inventory {
@@ -57,6 +57,10 @@
   border-right: 1px solid black;
 }
 
+.story-img {
+  align-self: flex-start;
+}
+
 .img {
   background-image: url(https://via.placeholder.com/150?text=scroll);
   background-attachment: fixed;
@@ -70,9 +74,10 @@
 }
 
 #scroll {
-  width: 14vw;
-  height: 14vw;
-  grid-column-start: 2;
+  width: 3.5vw;
+  height: 3.5vw;
+  grid-column-start: 12;
+  grid-row-start: 1;
   /* grid-column-end: span 5; */
   /* align-self: center; */
 }

@@ -43,7 +43,6 @@ class CodeArea extends Component {
                 height="70%"
                 showPrintMargin={false}
                 fontSize="16px"
-                wrap="1"
                 editorProps={{ $blockScrolling: Infinity }}
             />
             <Console />
