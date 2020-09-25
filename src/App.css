@@ -67,9 +67,7 @@
   justify-self: flex-start;
 }
 
-#scroll {
+.scroll {
   width: 3.5vw;
   height: 3.5vw;
-  grid-column-start: 12;
-  grid-row-start: 1;
 }

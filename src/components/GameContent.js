@@ -9,7 +9,7 @@ class GameContent extends Component {
             <div className="content">
                 <div className="top">
                     <p className="story">You found a muthafuckin scroll!</p><br />
-                    <img className="story-img" src="https://via.placeholder.com/3.5vw?text=2x2+scroll" alt="scroll" />
+                    <img className="story-img scroll" src="https://via.placeholder.com/150?text=2x2+scroll" alt="scroll" />
                 </div>
 
                 <div className="bottom">
