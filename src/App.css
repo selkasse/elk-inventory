@@ -74,23 +74,9 @@
   justify-self: flex-start;
 }
 
-.img {
-  background-image: url(https://via.placeholder.com/150?text=scroll);
-  background-attachment: fixed;
-  /* position: absolute; */
-  /* background-size: initial; */
-  /* background-repeat: no-repeat; */
-  /* width: 3.5vw;
-  height: 3.5vw; */
-  /* margin: 0; */
-  display: inline-block;
-}
-
 #scroll {
   width: 3.5vw;
   height: 3.5vw;
   grid-column-start: 12;
   grid-row-start: 1;
-  /* grid-column-end: span 5; */
-  /* align-self: center; */
 }
