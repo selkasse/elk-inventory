@@ -26,8 +26,6 @@
   width: 55%;
   padding: 2rem;
   text-align: center;
-  /* padding-left: 6rem;
-  padding-right: 6rem; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -39,17 +37,12 @@
 }
 
 .inventory {
-  /* changed from 3vw to 25px to test images */
   display: grid;
   grid-template-columns: repeat(12, 3.5vw);
   grid-template-rows: repeat(5, 3.5vw);
   grid-gap: 0px;
   text-align: center;
   background-color: #303030;
-
-  /* border: 5px solid #996633; */
-  /* border-top: 1px solid black;
-  border-left: 1px solid black; */
 }
 
 .top {

@@ -11,14 +11,24 @@ class CodeArea extends Component {
     const scroll = document.querySelector('.story-img');
     const inventory = document.querySelector('.inventory');
     scroll.classList.remove('.story-img');
-    inventory.insertAdjacentElement('beforeEnd', scroll);
+    
+    
+    let style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = 
+        \`#scroll {
+            grid-column-start: 6;
+            grid-row-start: 3;
+        }\`;
+    document.getElementsByTagName('head')[0].appendChild(style);
+    
     scroll.id = 'scroll';
     
+    inventory.insertAdjacentElement('beforeEnd', scroll);
+    
+    
 }`;
-//     state = {
-//         editorValue: `// You want to select the image of the scroll,\n//Then, using Javascript, you'll move the scroll into your inventory\nconst scroll = document.querySelector('.story-img');
-// console.log(scroll);`
-//     }
+
     render() {
 
         function onChange(newValue) {
