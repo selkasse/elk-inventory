@@ -7,12 +7,13 @@ class GameContent extends Component {
     render() {
         return (
             <div className="content">
-                <p className="story">You found a muthafuckin scroll!</p><br />
-                <img className="story-img" src="https://via.placeholder.com/100?text=2x2+scroll" alt="scroll" />
+                <div className="top">
+                    <p className="story">You found a muthafuckin scroll!</p><br />
+                    <img className="story-img" src="https://via.placeholder.com/100?text=2x2+scroll" alt="scroll" />
+                </div>
 
-                <br /> <br /> <br />
-                <div>
-
+                {/* <br /> <br /> <br /> */}
+                <div className="bottom">
                     <InventoryGrid />
                 </div>
                 

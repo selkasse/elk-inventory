@@ -30,6 +30,7 @@
   padding-right: 6rem; */
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -51,6 +52,18 @@
   border-left: 1px solid black; */
 }
 
+.top {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.bottom {
+  margin-bottom: 20vh;
+}
+
 .cell {
   background-color: #303030;
   border-bottom: 1px solid black;
@@ -58,7 +71,7 @@
 }
 
 .story-img {
-  align-self: flex-start;
+  justify-self: flex-start;
 }
 
 .img {
