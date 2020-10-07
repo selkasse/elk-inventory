@@ -40,6 +40,8 @@ class CodeArea extends Component {
                     if(results){
                         console.log(results);
                     }
+                    this.forceUpdate()
+                    window.location.reload();
                 }
                 catch(err){
 
