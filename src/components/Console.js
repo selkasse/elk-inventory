@@ -5,8 +5,9 @@ import '../App.css';
 class Console extends Component {
     render() {
         return (
-            <div className='console'>
-                CONSOLE
+
+            <div className='console' id="console">
+                
             </div>
         )
     }
