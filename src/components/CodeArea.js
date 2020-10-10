@@ -24,9 +24,10 @@ import '../App.css';
 //* initialize values here so that the editorValue string does not break
 // let col = 6;
 // let row = 3;
-class CodeArea extends Component {
-   
 
+
+class CodeArea extends Component {
+    
 
     editorValue = `function moveScroll(row, col){
     const MAX_ROWS = 5;
@@ -84,6 +85,11 @@ class CodeArea extends Component {
 
         function onLoad(editor) {
             editor.getSession().setUseWrapMode(true);
+            editor.scrollToLine(15, true, true, function () { });
+            editor.resize(true);
+
+            editor.gotoLine(15, 0, true);
+            // editor.setOption("firstLineNumber", 10)
         }
 
         return (
@@ -99,8 +105,8 @@ class CodeArea extends Component {
                 height="80%"
                 showPrintMargin={false}
                 fontSize="12px"
-                    editorProps={{
-                        $blockScrolling: Infinity }}
+                editorProps={{
+                    $blockScrolling: Infinity }}
             />
             <Console />
             </div>

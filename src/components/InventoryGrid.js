@@ -1,7 +1,12 @@
-import React, { Component } from 'react'
+import React, { createRef, Component } from 'react'
 import ReactDOM from 'react-dom';
 
 class InventoryGrid extends Component {
+
+    constructor(props) {
+        super(props);
+        this.wrapper = React.createRef();
+    }
 
     //? *******************************************************************
     //* Force a reload when the window resizes
@@ -83,8 +88,8 @@ class InventoryGrid extends Component {
         //? *******************************************************************
         //* Taken from Dave Geddes: https://mastery.games/post/grid-inspector/
         //? ******************************************************************* 
-        const container = ReactDOM.findDOMNode(this);
-        console.log(container);
+        // const container = ReactDOM.findDOMNode(this);
+        const container = this.wrapper.current;
         const inspector = document.createElement('div');
         inspector.setAttribute('style', `
             position: absolute;
@@ -108,7 +113,6 @@ class InventoryGrid extends Component {
         const columnData = this.parseGridTemplate(columns, columnGap)
         const rowData = this.parseGridTemplate(rows, rowGap)
 
-        console.log(columnData, rowData);
 
         //* extend the lines a bit so we can see them better
         const extendLines = 20
@@ -156,7 +160,7 @@ class InventoryGrid extends Component {
     }
     render() {
         return (
-            <div className='inventory'>
+            <div ref={this.wrapper} className='inventory'>
 
             </div>
             
