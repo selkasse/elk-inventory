@@ -5,28 +5,37 @@ import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-nord_dark";
 import '../App.css';
 
+//* initialize values here so that the editorValue string does not break
+let col = 6;
+let row = 3;
 class CodeArea extends Component {
+   
+    
 
-    editorValue = `function moveScroll(){
+    editorValue = `function moveScroll(col, row){
     const scroll = document.querySelector('.story-img');
+
     const inventory = document.querySelector('.inventory');
+
     scroll.classList.remove('.story-img');
     
     
     let style = document.createElement('style');
     style.type = 'text/css';
-    style.innerHTML = 
-        \`#scroll {
-            grid-column-start: 6;
-            grid-row-start: 3;
-        }\`;
-    document.getElementsByTagName('head')[0].appendChild(style);
     
-    scroll.id = 'scroll';
-    
-    inventory.insertAdjacentElement('beforeEnd', scroll);
-    
-    
+    if (col && row){
+
+        style.innerHTML = 
+            \`#scroll {
+                grid-column-start: ${col};
+                grid-row-start: ${row};
+            }\`;
+        document.getElementsByTagName('head')[0].appendChild(style);
+        
+        scroll.id = 'scroll';
+        
+        inventory.insertAdjacentElement('beforeEnd', scroll);
+    }  
 }`;
 
     render() {
@@ -68,7 +77,7 @@ class CodeArea extends Component {
                 width="auto"
                 height="80%"
                 showPrintMargin={false}
-                fontSize="16px"
+                fontSize="14px"
                     editorProps={{
                         $blockScrolling: Infinity }}
             />
