@@ -85,11 +85,7 @@ class CodeArea extends Component {
 
         function onLoad(editor) {
             editor.getSession().setUseWrapMode(true);
-            editor.scrollToLine(15, true, true, function () { });
-            editor.resize(true);
-
-            editor.gotoLine(15, 0, true);
-            // editor.setOption("firstLineNumber", 10)
+            editor.session.foldAll();
         }
 
         return (
@@ -107,6 +103,11 @@ class CodeArea extends Component {
                 fontSize="12px"
                 editorProps={{
                     $blockScrolling: Infinity }}
+                setOptions={{
+                    enableBasicAutocompletion: true,
+                    enableLiveAutocompletion: true,
+                    enableSnippets: true
+                }}
             />
             <Console />
             </div>
