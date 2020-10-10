@@ -93,7 +93,7 @@ class CodeArea extends Component {
                 width="auto"
                 height="80%"
                 showPrintMargin={false}
-                fontSize="12.95px"
+                fontSize="12px"
                     editorProps={{
                         $blockScrolling: Infinity }}
             />
