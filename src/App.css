@@ -99,7 +99,7 @@
     width: 100%;
     grid-area: code;
     border-right: none;
-    border-top: 5px solid gray;
+    border-top: 3px solid #3c6e71;
   }
   .console {
     grid-area: console;
