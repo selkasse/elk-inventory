@@ -6,13 +6,13 @@ import "ace-builds/src-noconflict/theme-nord_dark";
 import '../App.css';
 
 //* initialize values here so that the editorValue string does not break
-let col = 6;
-let row = 3;
+// let col = 6;
+// let row = 3;
 class CodeArea extends Component {
    
-    
 
-    editorValue = `function moveScroll(col, row){
+
+    editorValue = `function moveScroll(row, col){
     const scroll = document.querySelector('.story-img');
 
     const inventory = document.querySelector('.inventory');
