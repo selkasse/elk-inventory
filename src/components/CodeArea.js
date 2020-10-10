@@ -29,7 +29,16 @@ import '../App.css';
 class CodeArea extends Component {
     
 
-    editorValue = `function moveScroll(row, col){
+    editorValue = 
+`function validateInput(row, col){
+        if(!row || ! col) return falsel
+    
+        const MAX_ROWS = 5;
+        const MAX_COLS = 12;
+        
+        return row <= MAX_ROWS && col <= MAX_COLS;
+    }
+function moveScroll(row, col){
     const MAX_ROWS = 5;
     const MAX_COLS = 12;
 
@@ -38,26 +47,26 @@ class CodeArea extends Component {
     const inventory = document.querySelector('.inventory');
 
     scroll.classList.remove('.story-img');
-    
-    
-    let style = document.createElement('style');
-    style.type = 'text/css';
-    
-    if (row && col){
-        if(row <= MAX_ROWS && col <= MAX_COLS){
+
+    let valid = validateInput(row, col);
+
+    if(valid){
+       let style = document.createElement('style');
+            style.type = 'text/css';
 
             style.innerHTML = 
                 \`#scroll {
                     grid-column-start: \${col};
                     grid-row-start: \${row};
                 }\`;
+
             document.getElementsByTagName('head')[0].appendChild(style);
             
             scroll.id = 'scroll';
             
-            inventory.insertAdjacentElement('beforeEnd', scroll);
-        }
-    }  
+            inventory.insertAdjacentElement('beforeEnd', scroll); 
+    }
+    
 }`;
 
     render() {
