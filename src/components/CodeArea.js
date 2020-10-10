@@ -27,8 +27,8 @@ class CodeArea extends Component {
 
         style.innerHTML = 
             \`#scroll {
-                grid-column-start: ${col};
-                grid-row-start: ${row};
+                grid-column-start: \${col};
+                grid-row-start: \${row};
             }\`;
         document.getElementsByTagName('head')[0].appendChild(style);
         
