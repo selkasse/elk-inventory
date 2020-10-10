@@ -30,41 +30,45 @@ class CodeArea extends Component {
     
 
     editorValue = 
-`function validateInput(row, col){
-        if(!row || ! col) return falsel
-    
-        const MAX_ROWS = 5;
-        const MAX_COLS = 12;
-        
-        return row <= MAX_ROWS && col <= MAX_COLS;
-    }
-function moveScroll(row, col){
+`function validInput(row, col){
+    if(!row || ! col) return false;
+
     const MAX_ROWS = 5;
     const MAX_COLS = 12;
+    
+    return row <= MAX_ROWS && col <= MAX_COLS;
+}
 
-    const scroll = document.querySelector('.story-img');
+function getRandomInt(max){
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+function moveItem(row, col){
+
+    const item = document.querySelector('.story-img');
 
     const inventory = document.querySelector('.inventory');
 
-    scroll.classList.remove('.story-img');
+    item.classList.remove('.story-img');
 
-    let valid = validateInput(row, col);
 
-    if(valid){
-       let style = document.createElement('style');
-            style.type = 'text/css';
+    if(validInput(row,col)){
+        let style = document.createElement('style');
+        style.type = 'text/css';
 
-            style.innerHTML = 
-                \`#scroll {
-                    grid-column-start: \${col};
-                    grid-row-start: \${row};
-                }\`;
+        const idFromClass = item.classList[1] + getRandomInt(1000);
 
-            document.getElementsByTagName('head')[0].appendChild(style);
-            
-            scroll.id = 'scroll';
-            
-            inventory.insertAdjacentElement('beforeEnd', scroll); 
+        style.innerHTML = 
+            \`#\${idFromClass} {
+                grid-column-start: \${col};
+                grid-row-start: \${row};
+            }\`;
+
+        document.getElementsByTagName('head')[0].appendChild(style);
+        
+        item.id = idFromClass;
+        
+        inventory.insertAdjacentElement('beforeEnd', item); 
     }
     
 }`;
