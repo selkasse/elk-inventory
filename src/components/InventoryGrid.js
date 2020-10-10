@@ -92,7 +92,7 @@ class InventoryGrid extends Component {
             width: ${container.offsetWidth}px;
             top: ${container.offsetTop}px;
             left: ${container.offsetLeft}px;
-            // background: rgba(58, 250, 8, .5);
+            // border: rgba(58, 250, 8, .5);
         `);
 
         document.body.appendChild(inspector);
@@ -119,7 +119,9 @@ class InventoryGrid extends Component {
             line.setAttribute(
                 'style',
                 `
-                    background: rgba(0, 0, 0, 1);
+                    // background: rgba(0, 0, 0, 1);
+                    background: rgba(135, 224, 237, .5);
+                    // background: #87E0ED;
                     position: absolute;
                     height: ${container.offsetHeight}px;
                     width: ${item.end - item.start + (item.gap || 0)}px;
@@ -135,7 +137,9 @@ class InventoryGrid extends Component {
             line.setAttribute(
                 'style',
                 `
-                    background: rgba(0, 0, 0, 1);
+                    // background: rgba(0, 0, 0, 1);
+                    background: rgba(135, 224, 237, .5);
+                    // background: #87E0ED;
                     position: absolute;
                     width: ${container.offsetWidth}px;
                     height: ${item.end - item.start + (item.gap || 0)}px;

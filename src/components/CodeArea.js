@@ -3,6 +3,22 @@ import AceEditor from "react-ace";
 import Console from './Console';
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-nord_dark";
+import "ace-builds/src-noconflict/theme-gruvbox";
+import "ace-builds/src-noconflict/theme-cobalt";
+import "ace-builds/src-noconflict/theme-gob";
+import "ace-builds/src-noconflict/theme-katzenmilch";
+import "ace-builds/src-noconflict/theme-kr_theme";
+import "ace-builds/src-noconflict/theme-kuroir";
+import "ace-builds/src-noconflict/theme-merbivore";
+import "ace-builds/src-noconflict/theme-chaos";
+import "ace-builds/src-noconflict/theme-clouds_midnight";
+import "ace-builds/src-noconflict/theme-dawn";
+import "ace-builds/src-noconflict/theme-mono_industrial";
+import "ace-builds/src-noconflict/theme-pastel_on_dark";
+import "ace-builds/src-noconflict/theme-tomorrow_night_blue";
+import "ace-builds/src-noconflict/theme-crimson_editor";
+import "ace-builds/src-noconflict/theme-dracula";
+
 import '../App.css';
 
 //* initialize values here so that the editorValue string does not break
@@ -69,7 +85,7 @@ class CodeArea extends Component {
             <div className="code-area">
             <AceEditor
                 mode="javascript"
-                theme="nord_dark"
+                theme="dracula"
                 value={this.editorValue}
                 onChange={onChange}
                 onLoad={onLoad}
@@ -77,7 +93,7 @@ class CodeArea extends Component {
                 width="auto"
                 height="80%"
                 showPrintMargin={false}
-                fontSize="14px"
+                fontSize="12.95px"
                     editorProps={{
                         $blockScrolling: Infinity }}
             />
