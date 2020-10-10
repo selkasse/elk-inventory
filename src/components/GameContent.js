@@ -19,7 +19,6 @@ class GameContent extends Component {
                 <div className="bottom">
                     <InventoryGrid />
                     <div className="help-text">
-                        <p>Use the code editor to move the scroll into your inventory</p>
                     </div>
                 </div>
                 
