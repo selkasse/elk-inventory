@@ -9,7 +9,7 @@
 .App {
   display: flex;
   height: 100vh;
-  background-color: #171738;
+  background-color: #2e1760;
   color: #87e0ed;
   font-size: 16px;
 }
@@ -23,7 +23,7 @@
 
 .console {
   border-top: 3px dashed #3c6e71;
-  background-color: #2e1760;
+  background-color: #171738;
   height: 20%;
   padding: 0.5rem;
 }
