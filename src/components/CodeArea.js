@@ -66,7 +66,7 @@ class CodeArea extends Component {
                 onLoad={onLoad}
                 name="UNIQUE_ID_OF_DIV"
                 width="auto"
-                height="70%"
+                height="80%"
                 showPrintMargin={false}
                 fontSize="16px"
                     editorProps={{
