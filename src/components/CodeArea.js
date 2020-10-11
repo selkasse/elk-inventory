@@ -16,6 +16,16 @@ function CodeArea() {
            
             const userInput = new Function(newValue);
 
+            const scroll = document.getElementById('scroll-1');
+
+            if (scroll.style.gridColumnStart && scroll.style.gridRowStart) {
+
+                console.log(scroll.style.gridColumnStart);
+                console.log(scroll.style.gridRowStart);
+            }
+
+            // console.log(scroll.style.gridColumnStart, scroll.style.gridColumnEnd);
+
             try {
                 const results = userInput();
                 if (results) {
@@ -80,20 +90,9 @@ function moveItem(row, col){
 
 
     if(validInput(row,col)){
-        let style = document.createElement('style');
-        style.type = 'text/css';
 
-        const idFromClass = item.classList[1] + getRandomInt(1000);
-
-        style.innerHTML = 
-            \`#\${idFromClass} {
-                grid-column-start: \${col};
-                grid-row-start: \${row};
-            }\`;
-
-        document.getElementsByTagName('head')[0].appendChild(style);
-        
-        item.id = idFromClass;
+        item.style.gridColumnStart = col;
+        item.style.gridRowStart = row;
         
         inventory.insertAdjacentElement('beforeEnd', item); 
     }
