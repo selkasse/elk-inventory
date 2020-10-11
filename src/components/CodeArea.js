@@ -53,7 +53,7 @@ function CodeArea() {
     let editorValue =
 `function log(message){
     const consoleDiv = document.getElementById('console');
-    consoleDiv.innerHTML += \`\${ message } <br /> <br />\` ;
+    consoleDiv.innerHTML = \`\${ message } <br /> <br />\` ;
 }
 
 function validInput(row, col){
@@ -61,6 +61,7 @@ function validInput(row, col){
         log('oops! you need to provide row and column numbers');
         return false;
     } 
+    log('');
 
     const MAX_ROWS = 5;
     const MAX_COLS = 12;
@@ -112,7 +113,7 @@ function moveItem(row, col){
                 onLoad={onLoad}
                 name="UNIQUE_ID_OF_DIV"
                 width="auto"
-                height="80%"
+                height="100%"
                 showPrintMargin={false}
                 fontSize="12px"
                 editorProps={{

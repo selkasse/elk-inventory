@@ -60,6 +60,9 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+
+  height: 30%;
+
   /* margin-bottom: 5vh; */
 }
 
@@ -69,7 +72,8 @@
 }
 
 .help-text {
-  margin-bottom: 10vh;
+  /* margin-bottom: 10vh; */
+  display: none;
 }
 
 .cell {
@@ -90,11 +94,10 @@
 @media (max-width: 500px) {
   .App {
     display: grid;
-    grid-template-rows: 1fr 1fr 1vh;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas:
       "content"
-      "code"
-      "console";
+      "code";
   }
   .code-area {
     width: 100%;
@@ -107,8 +110,9 @@
   }
   .content {
     grid-area: content;
-    /* justify-content: center; */
+    /* justify-content: flex-start; */
     width: 100%;
+    /* overflow: scroll; */
     /* height: 80%; */
   }
 
@@ -130,5 +134,7 @@
 
   .console {
     /* height: 20%; */
+    /* overflow: hidden; */
+    display: none;
   }
 }
