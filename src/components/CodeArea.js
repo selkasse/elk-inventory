@@ -19,18 +19,17 @@ function CodeArea() {
             const scroll = document.getElementById('scroll-1');
 
             if (scroll.style.gridColumnStart && scroll.style.gridRowStart) {
-
+                //TODO: update the inventory state here
+                //TODO: pass the state back to <App>
+                //TODO: from <App>, pass the inventory state to <GameContent>
+                //TODO: from <GameContent>, pass inventory state to <InventoryGrid>
                 console.log(scroll.style.gridColumnStart);
                 console.log(scroll.style.gridRowStart);
             }
 
-            // console.log(scroll.style.gridColumnStart, scroll.style.gridColumnEnd);
-
             try {
-                const results = userInput();
-                if (results) {
-                    return <h1>hi</h1>
-                }
+                userInput();
+               
                 this.forceUpdate()
                 window.location.reload();
             }
