@@ -12,23 +12,24 @@ import '../App.css';
 function CodeArea() {
 
     const onChange = (newValue) => {
+        //* attempt to create a function from user input
         try {
            
             const userInput = new Function(newValue);
 
-            const scroll = document.getElementById('scroll-1');
-
-            if (scroll.style.gridColumnStart && scroll.style.gridRowStart) {
-                //TODO: update the inventory state here
-                //TODO: pass the state back to <App>
-                //TODO: from <App>, pass the inventory state to <GameContent>
-                //TODO: from <GameContent>, pass inventory state to <InventoryGrid>
-                console.log(scroll.style.gridColumnStart);
-                console.log(scroll.style.gridRowStart);
-            }
-
+            //* attempt to run the user input
             try {
                 userInput();
+                const scroll = document.getElementById('scroll-1');
+    
+                if (scroll.style.gridColumnStart && scroll.style.gridRowStart) {
+                    //TODO: update the inventory state here
+                    //TODO: pass the state back to <App>
+                    //TODO: from <App>, pass the inventory state to <GameContent>
+                    //TODO: from <GameContent>, pass inventory state to <InventoryGrid>
+                    console.log(scroll.style.gridColumnStart);
+                    console.log(scroll.style.gridRowStart);
+                }
                
                 this.forceUpdate()
                 window.location.reload();
