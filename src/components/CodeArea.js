@@ -46,6 +46,7 @@ function CodeArea() {
 
     const onLoad = (editor) => {
         editor.getSession().setUseWrapMode(true);
+        editor.setOption('showLineNumbers', false);
         editor.session.foldAll();
     }
 
@@ -57,16 +58,23 @@ function CodeArea() {
 }
 
 function validInput(row, col){
-    if(!row || ! col){
-        log('oops! you need to provide row and column numbers');
-        return false;
-    } 
+    if(!row || ! col) return false;
+    
     log('');
 
     const MAX_ROWS = 5;
     const MAX_COLS = 12;
     
-    return row <= MAX_ROWS && col <= MAX_COLS;
+    let validRow = row <= MAX_ROWS;
+    let validCol = col <= MAX_COLS;
+
+    if(!validRow){
+        log(\`\${row} is outside the inventory row range\`);
+    }
+    if(!validCol){
+        log(\`\${col} is outside the inventory column range\`);
+    }
+    return validRow && validCol;
 }
 
 function getRandomInt(max){
