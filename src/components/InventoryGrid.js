@@ -20,13 +20,14 @@ class InventoryGrid extends Component {
     //* -- End force reload code
     //? *******************************************************************
 
+    
+    //? *******************************************************************
+    //* Taken from Dave Geddes: https://mastery.games/post/grid-inspector/
+    //? *******************************************************************    
     getName(item) {
         return item.includes("[") ? item.match(/\[(.*)\]/)[1].trim() : null;
     }
 
-    //? *******************************************************************
-    //* Taken from Dave Geddes: https://mastery.games/post/grid-inspector/
-    //? *******************************************************************    
     parseGridTemplate(templateStr, gap = "0px") {
         const gapSize = parseFloat(gap.replace("px", ""));
 
