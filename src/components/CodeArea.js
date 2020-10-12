@@ -9,9 +9,333 @@ import "ace-builds/src-noconflict/theme-dracula";
 import '../App.css';
 
 
-function CodeArea() {
+function CodeArea({onItemMove}) {
+
+    //TODO: take state out of CodeArea and put it into App
+    // * the state does not need to be held here
+    // * rather, when the user inputs the moveItem() function,
+    //*     CodeArea will update the state (slots) in App, via the useState hook
+
+
+    // const initSlots = () => {
+    //    setSlots([
+    //        {
+    //            row: 1,
+    //            column: 1,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 1,
+    //            column: 2,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 1,
+    //            column: 3,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 1,
+    //            column: 4,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 1,
+    //            column: 5,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 1,
+    //            column: 6,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 1,
+    //            column: 7,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 1,
+    //            column: 8,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 1,
+    //            column: 9,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 1,
+    //            column: 10,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 1,
+    //            column: 11,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 1,
+    //            column: 12,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 2,
+    //            column: 1,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 2,
+    //            column: 2,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 2,
+    //            column: 3,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 2,
+    //            column: 4,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 2,
+    //            column: 5,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 2,
+    //            column: 6,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 2,
+    //            column: 7,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 2,
+    //            column: 8,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 2,
+    //            column: 9,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 2,
+    //            column: 10,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 2,
+    //            column: 11,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 2,
+    //            column: 12,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 3,
+    //            column: 1,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 3,
+    //            column: 2,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 3,
+    //            column: 3,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 3,
+    //            column: 4,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 3,
+    //            column: 5,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 3,
+    //            column: 6,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 3,
+    //            column: 7,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 3,
+    //            column: 8,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 3,
+    //            column: 9,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 3,
+    //            column: 10,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 3,
+    //            column: 11,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 3,
+    //            column: 12,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 4,
+    //            column: 1,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 4,
+    //            column: 2,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 4,
+    //            column: 3,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 4,
+    //            column: 4,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 4,
+    //            column: 5,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 4,
+    //            column: 6,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 4,
+    //            column: 7,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 4,
+    //            column: 8,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 4,
+    //            column: 9,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 4,
+    //            column: 10,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 4,
+    //            column: 11,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 4,
+    //            column: 12,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 5,
+    //            column: 1,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 5,
+    //            column: 2,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 5,
+    //            column: 3,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 5,
+    //            column: 4,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 5,
+    //            column: 5,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 5,
+    //            column: 6,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 5,
+    //            column: 7,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 5,
+    //            column: 8,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 5,
+    //            column: 9,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 5,
+    //            column: 10,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 5,
+    //            column: 11,
+    //            status: 'empty'
+    //        },
+    //        {
+    //            row: 5,
+    //            column: 12,
+    //            status: 'empty'
+    //        }
+    //    ])
+    
+    // }    
+
+    // useEffect(() => {
+    //     initSlots();
+    // }, [])
+
+    function handleItemMove(row, col) {
+        console.log('in handleItemMOve in CodeArea.js');
+        onItemMove(row,col);
+    }
+
+   
 
     const onChange = (newValue) => {
+        // onItemMove(row,col);
         //* attempt to create a function from user input
         try {
            
@@ -23,16 +347,41 @@ function CodeArea() {
                 const scroll = document.getElementById('scroll-1');
     
                 if (scroll.style.gridColumnStart && scroll.style.gridRowStart) {
-                    //TODO: update the inventory state here
-                    //TODO: pass the state back to <App>
-                    //TODO: from <App>, pass the inventory state to <GameContent>
-                    //TODO: from <GameContent>, pass inventory state to <InventoryGrid>
+                   
                     console.log(scroll.style.gridColumnStart);
                     console.log(scroll.style.gridRowStart);
+                    const userCols = scroll.style.gridColumnStart;
+                    const userRows = scroll.style.gridRowStart;
+
+                    // TODO: link this up as a prop/attribute in App.js
+                    handleItemMove(userCols, userRows);
+
+                    // this.setSlots(prevSlots => ({
+
+                    //     slots: prevSlots.map(
+                    //         slot => slot.column === userCols && slot.row === userRows ? { ...slot, status: 'occupied' } : slot
+                    //     )
+
+                    // }))
+
+                    // setSlots([{
+                    //     column: 1,
+                    //     row: 1,
+                    //     status: 'occupied'
+                    // }])
+
+
+                    // this.setSlots({slots: this.state.slots.map(slot => {
+                    //     if(slot.column === userCols && slot.row === userRows){
+                    //         slot.status = 'occupied';
+                    //     }
+                    // })})
+                    
+
                 }
                
-                this.forceUpdate()
-                window.location.reload();
+                // this.forceUpdate()
+                // window.location.reload();
             }
             catch (err) {
 
@@ -99,6 +448,7 @@ function moveItem(row, col){
     
 }`;
 
+
     return (
         <div className="code-area">
             <AceEditor
@@ -121,6 +471,7 @@ function moveItem(row, col){
                     enableSnippets: true
                 }}
             />
+
             <Console />
         </div>
     )
