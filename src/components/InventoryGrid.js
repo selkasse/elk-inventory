@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 class InventoryGrid extends Component {
 
     constructor(props) {
-        // super(props);
+        super(props);
         this.wrapper = React.createRef();
     }
 

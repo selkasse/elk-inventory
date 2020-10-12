@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import AceEditor from "react-ace";
 import Console from './Console';
 // import { Hook, Console, Decode } from 'console-feed'
@@ -27,9 +27,13 @@ function CodeArea({onItemMove, onInputChange, input}) {
         onInputChange(input);
     }
 
-    // useEffect(()=> {
-    //     onLoad(AceEditor);
-    // })
+    //* get a reference to AceEditor so that onLoad can be called again upon re-render
+    const editorReference = useRef(null);
+
+    useEffect(()=> {
+        console.log('editorReference: ' + editorReference.current.editor);
+        onLoad(editorReference.current.editor);
+    })
 
 
 
@@ -80,10 +84,16 @@ function CodeArea({onItemMove, onInputChange, input}) {
     }
 
     const onLoad = (editor) => {
-        console.log('inside onload');
+        // let editorReference = createRef(editor);
         editor.getSession().setUseWrapMode(true);
         editor.setOption('showLineNumbers', false);
         editor.session.foldAll();
+
+        var row = editor.session.getLength() - 1
+        var column = editor.session.getLine(row).length // or simply Infinity
+        editor.gotoLine(row + 1, column)
+        // setEditorRef(editorReference);
+
     }
 
 
@@ -137,11 +147,10 @@ function moveItem(row, col){
 }`;
     
 
-
-    // console.log('input in CodeArea ' + input)
     return (
         <div className="code-area">
             <AceEditor
+                ref={editorReference}
                 mode="javascript"
                 theme="dracula"
                 value={input ? input : editorValue}
