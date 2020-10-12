@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import AceEditor from "react-ace";
 import Console from './Console';
 // import { Hook, Console, Decode } from 'console-feed'
@@ -8,38 +8,61 @@ import "ace-builds/src-noconflict/theme-dracula";
 
 import '../App.css';
 
+// const CodeArea = React.memo(function CodeArea({onItemMove}) {
+
+    
+// })
 
 function CodeArea({onItemMove}) {
 
+    const [scrollRow, setScrollRow] = useState(0);
+    const [scrollCol, setScrollCol] = useState(0);
 
     function handleItemMove(row, col) {
         console.log('in handleItemMOve in CodeArea.js');
-        onItemMove(row,col);
+        onItemMove(row, col);
     }
 
-   
+    // useEffect(()=> {
+    //     handleItemMove(scrollRow, scrollCol);
+    // },[scrollRow, scrollCol, handleItemMove])
+
+
 
     const onChange = (newValue) => {
         // onItemMove(row,col);
         //* attempt to create a function from user input
         try {
-           
+
             const userInput = new Function(newValue);
 
             //* attempt to run the user input
             try {
-                userInput();
                 const scroll = document.getElementById('scroll-1');
-    
+                userInput();
+
                 if (scroll.style.gridColumnStart && scroll.style.gridRowStart) {
-                   
+
                     console.log(scroll.style.gridColumnStart);
                     console.log(scroll.style.gridRowStart);
                     const userCols = scroll.style.gridColumnStart;
                     const userRows = scroll.style.gridRowStart;
+                    let changed = false;
+                    if(userCols !== scrollCol) {
+                        changed = true;
+                        setScrollCol(userCols);
+
+                    }
+                    if(userRows !== scrollRow){
+                        changed = true;
+                        setScrollRow(userRows);
+                    }
+
+                    if(changed){
+                        handleItemMove(userCols, userRows);
+                    }
 
                     // TODO: link this up as a prop/attribute in App.js
-                    handleItemMove(userCols, userRows);
                 }
             }
             catch (err) {
@@ -52,6 +75,7 @@ function CodeArea({onItemMove}) {
     }
 
     const onLoad = (editor) => {
+        console.log('inside onload');
         editor.getSession().setUseWrapMode(true);
         editor.setOption('showLineNumbers', false);
         editor.session.foldAll();
@@ -59,7 +83,7 @@ function CodeArea({onItemMove}) {
 
 
     let editorValue =
-`function log(message){
+        `function log(message){
     const consoleDiv = document.getElementById('console');
     consoleDiv.innerHTML = \`\${ message } <br /> <br />\` ;
 }
@@ -134,6 +158,7 @@ function moveItem(row, col){
             <Console />
         </div>
     )
+    
 }
 
 

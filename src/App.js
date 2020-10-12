@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CodeArea from './components/CodeArea';
 import GameContent from './components/GameContent';
 
 
 
+// const App = React.memo(function App() {
+
+// })
+
 function App() {  
+
+  //* useEffect gets called after every render of the component
 
   const [slots, setSlots] = useState(
 
@@ -313,29 +319,31 @@ function App() {
   );
 
 
-  const onItemMove = (row, col) => {
+  const moveItem = (row, col) => {
     console.log(typeof row);
     const updatedSlots = slots.map(slot => {
       console.log(typeof slot.row);
-      if(slot.row.toString() === row && slot.column.toString() === col){
+      if (slot.row.toString() === row && slot.column.toString() === col) {
         slot.status = 'occupied';
       }
       return slot;
     });
     setSlots(updatedSlots);
-    
-    
 
-    
+
+
+
   }
 
+  //TODO: try passing in the user input here as state, 
+  //TODO: then, pass the input to CodeArea, and append it to editorValue
   return (
     <div className="App">
-      
-      <CodeArea onItemMove={onItemMove}/>  
+
+      <CodeArea onItemMove={moveItem} />
       {/* <GameContent slots={slots}/> */}
-      <GameContent />
-      
+      <GameContent slots={slots}/>
+
     </div>
   );
 }
