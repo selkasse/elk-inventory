@@ -13,19 +13,23 @@ import '../App.css';
     
 // })
 
-function CodeArea({onItemMove}) {
+function CodeArea({onItemMove, onInputChange, input}) {
 
     const [scrollRow, setScrollRow] = useState(0);
     const [scrollCol, setScrollCol] = useState(0);
 
-    function handleItemMove(row, col) {
+    function handleItemMove(row, col, itemID) {
         console.log('in handleItemMOve in CodeArea.js');
-        onItemMove(row, col);
+        onItemMove(row, col, itemID);
+    }
+
+    function handleInputChange(input){
+        onInputChange(input);
     }
 
     // useEffect(()=> {
-    //     handleItemMove(scrollRow, scrollCol);
-    // },[scrollRow, scrollCol, handleItemMove])
+    //     onLoad(AceEditor);
+    // })
 
 
 
@@ -59,7 +63,8 @@ function CodeArea({onItemMove}) {
                     }
 
                     if(changed){
-                        handleItemMove(userCols, userRows);
+                        handleItemMove(userRows, userCols, scroll.id);
+                        handleInputChange(newValue);
                     }
 
                     // TODO: link this up as a prop/attribute in App.js
@@ -130,14 +135,16 @@ function moveItem(row, col){
     }
     
 }`;
+    
 
 
+    // console.log('input in CodeArea ' + input)
     return (
         <div className="code-area">
             <AceEditor
                 mode="javascript"
                 theme="dracula"
-                value={editorValue}
+                value={input ? input : editorValue}
                 onChange={onChange}
                 onLoad={onLoad}
                 name="UNIQUE_ID_OF_DIV"

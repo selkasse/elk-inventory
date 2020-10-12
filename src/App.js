@@ -317,30 +317,35 @@ function App() {
       }
     ]
   );
+  const [input, setInput] = useState("");
 
 
-  const moveItem = (row, col) => {
-    console.log(typeof row);
+  const moveItem = (row, col, itemID) => {
+    console.log('itemID in App.js: ' + itemID);
     const updatedSlots = slots.map(slot => {
-      console.log(typeof slot.row);
       if (slot.row.toString() === row && slot.column.toString() === col) {
-        slot.status = 'occupied';
+        slot.status = itemID;
+      }
+      else {
+        slot.status = 'empty';
       }
       return slot;
     });
     setSlots(updatedSlots);
-
-
-
-
   }
+
+  const handleInput = (input) => {
+    // console.log('input in App.js: ' + input);
+    setInput(input);
+  }
+
 
   //TODO: try passing in the user input here as state, 
   //TODO: then, pass the input to CodeArea, and append it to editorValue
   return (
     <div className="App">
 
-      <CodeArea onItemMove={moveItem} />
+      <CodeArea onItemMove={moveItem} onInputChange={handleInput} input={input}/>
       {/* <GameContent slots={slots}/> */}
       <GameContent slots={slots}/>
 
