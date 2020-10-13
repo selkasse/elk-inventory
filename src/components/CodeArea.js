@@ -2,24 +2,20 @@ import React, {useState, useRef, useEffect} from 'react'
 import AceEditor from "react-ace";
 import Console from './Console';
 // import { Hook, Console, Decode } from 'console-feed'
-// import { Console, Hook, Unhook } from 'console-feed'
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-dracula";
 
 import '../App.css';
 
-// const CodeArea = React.memo(function CodeArea({onItemMove}) {
 
-    
-// })
 
-function CodeArea({onItemMove, onInputChange, input}) {
+function CodeArea({onItemMove, onInputChange, input, onCursorSave, cursorRow, cursorColumn}) {
 
     const [scrollRow, setScrollRow] = useState(0);
     const [scrollCol, setScrollCol] = useState(0);
+    
 
     function handleItemMove(row, col, itemID) {
-        console.log('in handleItemMOve in CodeArea.js');
         onItemMove(row, col, itemID);
     }
 
@@ -27,18 +23,20 @@ function CodeArea({onItemMove, onInputChange, input}) {
         onInputChange(input);
     }
 
+    function handleCursor(row, col){
+        onCursorSave(row, col);
+    }
+
     //* get a reference to AceEditor so that onLoad can be called again upon re-render
     const editorReference = useRef(null);
 
     useEffect(()=> {
-        console.log('editorReference: ' + editorReference.current.editor);
         onLoad(editorReference.current.editor);
     })
 
 
 
     const onChange = (newValue) => {
-        // onItemMove(row,col);
         //* attempt to create a function from user input
         try {
 
@@ -51,8 +49,6 @@ function CodeArea({onItemMove, onInputChange, input}) {
 
                 if (scroll.style.gridColumnStart && scroll.style.gridRowStart) {
 
-                    console.log(scroll.style.gridColumnStart);
-                    console.log(scroll.style.gridRowStart);
                     const userCols = scroll.style.gridColumnStart;
                     const userRows = scroll.style.gridRowStart;
                     let changed = false;
@@ -69,9 +65,11 @@ function CodeArea({onItemMove, onInputChange, input}) {
                     if(changed){
                         handleItemMove(userRows, userCols, scroll.id);
                         handleInputChange(newValue);
+                        const cursorColumn = editorReference.current.editor.getCursorPosition().column;
+                        const cursorRow = editorReference.current.editor.getCursorPosition().row;
+                        handleCursor(cursorRow, cursorColumn);
                     }
 
-                    // TODO: link this up as a prop/attribute in App.js
                 }
             }
             catch (err) {
@@ -84,15 +82,17 @@ function CodeArea({onItemMove, onInputChange, input}) {
     }
 
     const onLoad = (editor) => {
-        // let editorReference = createRef(editor);
+        editor.session.foldAll();
         editor.getSession().setUseWrapMode(true);
         editor.setOption('showLineNumbers', false);
-        editor.session.foldAll();
 
-        var row = editor.session.getLength() - 1
-        var column = editor.session.getLine(row).length // or simply Infinity
-        editor.gotoLine(row + 1, column)
-        // setEditorRef(editorReference);
+        if(!cursorRow && !cursorColumn){
+            const row = editor.session.getLength() - 1
+            const column = editor.session.getLine(row).length // * or simply Infinity (comment from Stack Overflow)
+
+            editor.gotoLine(row + 1, column - 1);
+            // editor.selection.moveTo(row + 1, column -2);
+        }
 
     }
 

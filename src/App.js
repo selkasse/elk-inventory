@@ -10,7 +10,6 @@ import GameContent from './components/GameContent';
 
 function App() {  
 
-  //* useEffect gets called after every render of the component
 
   const [slots, setSlots] = useState(
 
@@ -318,10 +317,11 @@ function App() {
     ]
   );
   const [input, setInput] = useState("");
+  const [cursorColumn, setCursorColumn] = useState(0)
+  const [cursorRow, setCursorRow] = useState(0)
 
 
   const moveItem = (row, col, itemID) => {
-    console.log('itemID in App.js: ' + itemID);
     const updatedSlots = slots.map(slot => {
       if (slot.row.toString() === row && slot.column.toString() === col) {
         slot.status = itemID;
@@ -335,18 +335,26 @@ function App() {
   }
 
   const handleInput = (input) => {
-    // console.log('input in App.js: ' + input);
     setInput(input);
   }
 
+  const storeCursor = (row, col) => {
+    setCursorRow(row);
+    setCursorColumn(col);
+  }
 
-  //TODO: try passing in the user input here as state, 
-  //TODO: then, pass the input to CodeArea, and append it to editorValue
+
   return (
     <div className="App">
 
-      <CodeArea onItemMove={moveItem} onInputChange={handleInput} input={input}/>
-      {/* <GameContent slots={slots}/> */}
+      <CodeArea 
+        onItemMove={moveItem} 
+        onInputChange={handleInput} 
+        onCursorSave={storeCursor} 
+        input={input}
+        cursorRow={cursorRow}
+        cursorColumn={cursorColumn}
+      />
       <GameContent slots={slots}/>
 
     </div>
