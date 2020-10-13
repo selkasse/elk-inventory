@@ -1,11 +1,10 @@
 import React, { createRef, Component } from 'react'
-import ReactDOM from 'react-dom';
 
 class InventoryGrid extends Component {
 
     constructor(props) {
         super(props);
-        this.wrapper = React.createRef();
+        this.wrapper = createRef();
     }
 
     //? *******************************************************************
@@ -116,7 +115,8 @@ class InventoryGrid extends Component {
 
 
         //* extend the lines a bit so we can see them better
-        const extendLines = 20
+        //? I'm not sure where this is supposed to be used
+        // const extendLines = 20
 
         //* render a line for each vertical grid line
         columnData.forEach(item => {

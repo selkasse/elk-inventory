@@ -1,9 +1,9 @@
 import React, {useState, useRef, useEffect} from 'react'
 import AceEditor from "react-ace";
 import Console from './Console';
-// import { Hook, Console, Decode } from 'console-feed'
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-dracula";
+import 'brace/ext/language_tools';
 
 import '../App.css';
 
@@ -86,12 +86,16 @@ function CodeArea({onItemMove, onInputChange, input, onCursorSave, cursorRow, cu
         editor.getSession().setUseWrapMode(true);
         editor.setOption('showLineNumbers', false);
 
+        // * this is to handle the first time you move an item
+        // * It is behaving like the component is re-rendering before the props are passed in
+        // * to test this out, put a console log in the if block below
+        // * you will see that cursorRow and cursorColumn are falsy after the first call to moveItem()
         if(!cursorRow && !cursorColumn){
             const row = editor.session.getLength() - 1
             const column = editor.session.getLine(row).length // * or simply Infinity (comment from Stack Overflow)
 
             editor.gotoLine(row + 1, column - 1);
-            // editor.selection.moveTo(row + 1, column -2);
+            // editor.selection.moveTo(row + 1, column -2); //* alternate option
         }
 
     }
