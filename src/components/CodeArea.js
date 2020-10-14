@@ -127,10 +127,6 @@ function validInput(row, col){
     return validRow && validCol;
 }
 
-function getRandomInt(max){
-    return Math.floor(Math.random() * Math.floor(max));
-}
-
 function moveItem(row, col){
 
     const item = document.querySelector('.story-img');
