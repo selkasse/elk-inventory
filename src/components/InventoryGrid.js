@@ -100,7 +100,7 @@ class InventoryGrid extends Component {
             // border: rgba(58, 250, 8, .5);
         `);
 
-        document.body.appendChild(inspector);
+        // document.body.appendChild(inspector);
 
         const styles = window.getComputedStyle(container)
         const rows = styles.getPropertyValue('grid-template-rows')

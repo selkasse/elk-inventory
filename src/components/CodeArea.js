@@ -7,9 +7,7 @@ import 'brace/ext/language_tools';
 
 import '../App.css';
 
-
-
-function CodeArea({onItemMove, onInputChange, input, onCursorSave, cursorRow, cursorColumn}) {
+function CodeArea({onItemMove, onInputChange, input, onCursorSave, cursorRow, cursorColumn, currentLevel, onLevelComplete}) {
 
     const [scrollRow, setScrollRow] = useState(0);
     const [scrollCol, setScrollCol] = useState(0);
@@ -25,6 +23,11 @@ function CodeArea({onItemMove, onInputChange, input, onCursorSave, cursorRow, cu
 
     function handleCursor(row, col){
         onCursorSave(row, col);
+    }
+
+    function handleLevelComplete(level){
+        console.log('level in handleLevelComplete: ' + level);
+        onLevelComplete(level);
     }
 
     //* get a reference to AceEditor so that onLoad can be called again upon re-render
@@ -63,11 +66,13 @@ function CodeArea({onItemMove, onInputChange, input, onCursorSave, cursorRow, cu
                     }
 
                     if(changed){
+                        //TODO: update the state of the current level to 'done'
                         handleItemMove(userRows, userCols, scroll.id);
                         handleInputChange(newValue);
                         const cursorColumn = editorReference.current.editor.getCursorPosition().column;
                         const cursorRow = editorReference.current.editor.getCursorPosition().row;
                         handleCursor(cursorRow, cursorColumn);
+                        handleLevelComplete(currentLevel);
                     }
 
                 }
@@ -95,11 +100,9 @@ function CodeArea({onItemMove, onInputChange, input, onCursorSave, cursorRow, cu
             const column = editor.session.getLine(row).length // * or simply Infinity (comment from Stack Overflow)
 
             editor.gotoLine(row + 1, column - 1);
-            // editor.selection.moveTo(row + 1, column -2); //* alternate option
+            // editor.selection.moveTo(row + 1, column -2); // * alternate option
         }
-
     }
-
 
     let editorValue =
         `function log(message){

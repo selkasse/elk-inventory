@@ -316,6 +316,21 @@ function App() {
       }
     ]
   );
+  const [levels, setLevels] = useState([
+    {
+      id: 1,
+      text: 'You found a muthafuckin scroll!',
+      imageID: 'scroll-1',
+      done: false
+    },
+    {
+      id: 2,
+      text: 'You found another scroll!',
+      imageID: 'scroll-2',
+      done: false
+    }
+  ])
+  const [currentLevel, setCurrentLevel] = useState(1);
   const [input, setInput] = useState("");
   const [cursorColumn, setCursorColumn] = useState(0)
   const [cursorRow, setCursorRow] = useState(0)
@@ -343,6 +358,23 @@ function App() {
     setCursorColumn(col);
   }
 
+  function incrementLevel(level){
+    setCurrentLevel(level + 1);
+    setInput("");
+  }
+
+  const markLevelComplete = (id) => {
+    console.log(id);
+    const updatedLevels = levels.map(level => {
+      if(level.id === id){
+        level.done = true;
+      }
+      return level;
+    })
+
+    setLevels(updatedLevels);
+    console.log(levels);
+  }
 
   return (
     <div className="App">
@@ -354,8 +386,15 @@ function App() {
         input={input}
         cursorRow={cursorRow}
         cursorColumn={cursorColumn}
+        currentLevel={currentLevel}
+        onLevelComplete={markLevelComplete}
       />
-      <GameContent slots={slots}/>
+      <GameContent 
+        slots={slots} 
+        levels={levels} 
+        currentLevel={currentLevel}
+        handleNextLevel={incrementLevel}
+      />
 
     </div>
   );

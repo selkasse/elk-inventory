@@ -76,6 +76,10 @@
   height: 3.5vw;
 }
 
+.hide {
+  display: none;
+}
+
 @media (max-width: 500px) {
   .App {
     display: grid;
