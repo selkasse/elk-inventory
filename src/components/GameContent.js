@@ -10,6 +10,7 @@ function GameContent({slots, levels, currentLevel, handleNextLevel}){
         handleNextLevel(currentLevel);
     }
 
+    // console.log('in GameContent');
     return (
         <div className="content">
             <div className="top">
